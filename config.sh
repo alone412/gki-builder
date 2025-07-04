@@ -25,7 +25,7 @@ KERNEL_BRANCH="oneplus/sm8550_v_15.0.0_oneplus_12r"
 # Defconfig
 # ─────────────────────────────────────
 KERNEL_DEFCONFIG="gki_defconfig"
-DEFCONFIG_FILE="common/arch/arm64/configs/${KERNEL_DEFCONFIG}"
+DEFCONFIG_FILE="/arch/arm64/configs/${KERNEL_DEFCONFIG}"
 
 # ─────────────────────────────────────
 # AnyKernel3 ZIP Packaging
