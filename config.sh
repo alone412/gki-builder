@@ -1,82 +1,60 @@
 #!/usr/bin/env bash
 
-# ==============================
-#   Kernel Build Configuration
-# ==============================
+# ─────────────────────────────────────
+# Basic Info
+# ─────────────────────────────────────
+KERNEL_NAME="QuartiX-v2"                   # Your custom kernel name
+GKI_VERSION="android15-5.15"              # ✅ GKI version Android 15
+DEVICE_CODENAME="oneplus12r"              # Optional use for ZIP naming
 
-# Kernel name
-KERNEL_NAME="QuartiX-v2"
-
-# GKI version (for OnePlus 12R A15)
-GKI_VERSION="android14-5.15"
-
-# Build identity
+# ─────────────────────────────────────
+# Build Info
+# ─────────────────────────────────────
 export TZ="Asia/Kolkata"
-export KBUILD_BUILD_USER="abhi"
-export KBUILD_BUILD_HOST="${KERNEL_NAME}"
-export KBUILD_BUILD_TIMESTAMP="$(date)"
+export KBUILD_BUILD_USER="abdul"
+export KBUILD_BUILD_HOST="$KERNEL_NAME"
+export KBUILD_BUILD_TIMESTAMP=$(date)
 
-# ==============================
-#   Kernel Source Configuration
-# ==============================
+# ─────────────────────────────────────
+# Kernel Source (only for non-manifest builds)
+# ─────────────────────────────────────
+KERNEL_REPO=""
+KERNEL_BRANCH=""
 
-# Kernel source
-KERNEL_REPO="https://github.com/OnePlusOSS/android_kernel_oneplus_sm8550"
-KERNEL_BRANCH="oneplus/sm8550_u_14.0.0"
+# ─────────────────────────────────────
+# Defconfig
+# ─────────────────────────────────────
 KERNEL_DEFCONFIG="gki_defconfig"
-DEFCONFIG_FILE="$workdir/common/arch/arm64/configs/${KERNEL_DEFCONFIG}"
+DEFCONFIG_FILE="common/arch/arm64/configs/${KERNEL_DEFCONFIG}"
 
-# Additional defconfigs (if required)
-DEFCONFIGS=""  # Leave empty unless merging more .config files
+# ─────────────────────────────────────
+# AnyKernel3 ZIP Packaging
+# ─────────────────────────────────────
+ANYKERNEL_REPO="https://github.com/hazepynut/anykernel"
+ANYKERNEL_BRANCH="gki"
 
-# ==============================
-#   AnyKernel Packaging
-# ==============================
+# ─────────────────────────────────────
+# Optional Defconfig Add-ons
+# ─────────────────────────────────────
+DEFCONFIGS="" # Keep empty unless you want to merge .config files
 
-ANYKERNEL_REPO="https://github.com/TanakaLun/AnyKernel3"
-ANYKERNEL_BRANCH="main"
+# ─────────────────────────────────────
+# Releases Repo (Optional)
+# ─────────────────────────────────────
+GKI_RELEASES_REPO="https://github.com/alone412/quartix-releases"
 
-# ==============================
-#   Compiler Options
-# ==============================
-
-# AOSP Clang (Disabled)
+# ─────────────────────────────────────
+# Toolchain Config
+# ─────────────────────────────────────
 USE_AOSP_CLANG="false"
-AOSP_CLANG_SOURCE="r547379"  # Optional if enabled
+AOSP_CLANG_SOURCE="r547379" # Only used if AOSP clang is enabled
 
-# Custom Clang (RvClang - enabled)
 USE_CUSTOM_CLANG="true"
 CUSTOM_CLANG_SOURCE="https://github.com/Rv-Project/RvClang/releases/download/20.1.0/RvClang-20.1.0-bolt-pgo-full_lto.tar.gz"
 CUSTOM_CLANG_BRANCH=""
 
-# ==============================
-#   Optional Modules
-# ==============================
-
-# Enable KernelSU Next
-KSU="Next"
-
-# Enable SUSFS Patch
-USE_KSU_SUSFS="true"
-
-# Use manual hook (optional for Next+SUSFS)
-USE_KSU_MANUAL_HOOK="true"
-
-# Create boot image (only if device needs it)
-BUILD_BOOTIMG="false"
-
-# Build kernel modules (LKM)
-BUILD_LKMS="false"
-
-# Generate defconfig from .config after build
-GENERATE_DEFCONFIG="false"
-
-# Is this the last build? (used in metadata)
-LAST_BUILD="true"
-
-# ==============================
-#   Final Output
-# ==============================
-
-BUILD_DATE="$(date -d "$KBUILD_BUILD_TIMESTAMP" +"%Y-%m-%d-%H%M")"
-ZIP_NAME="${KERNEL_NAME}-KVER-VARIANT.zip"  # Will be replaced during build
+# ─────────────────────────────────────
+# ZIP Output
+# ─────────────────────────────────────
+BUILD_DATE=$(date -d "$KBUILD_BUILD_TIMESTAMP" +"%Y-%m-%d-%H%M")
+ZIP_NAME="${KERNEL_NAME}-A15-${DEVICE_CODENAME}-${BUILD_DATE}.zip"
