@@ -3,7 +3,7 @@
 # ─────────────────────────────────────
 # Basic Info
 # ─────────────────────────────────────
-KERNEL_NAME="QuartiX-v2"                   # Your custom kernel name
+KERNEL_NAME="Shifa-v2"                   # Your custom kernel name
 GKI_VERSION="android15-5.15"              # ✅ GKI version Android 15
 DEVICE_CODENAME="oneplus12r"              # Optional use for ZIP naming
 
@@ -18,8 +18,8 @@ export KBUILD_BUILD_TIMESTAMP=$(date)
 # ─────────────────────────────────────
 # Kernel Source (only for non-manifest builds)
 # ─────────────────────────────────────
-KERNEL_REPO=""
-KERNEL_BRANCH=""
+KERNEL_REPO="https://github.com/OnePlusOSS/android_kernel_oneplus_sm8550"
+KERNEL_BRANCH="oneplus/sm8550_v_15.0.0_oneplus_12r"
 
 # ─────────────────────────────────────
 # Defconfig
