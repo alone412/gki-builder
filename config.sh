@@ -18,7 +18,7 @@ ANYKERNEL_BRANCH="gki"
 
 # Kernel source
 KERNEL_REPO="https://github.com/OnePlusOSS/android_kernel_oneplus_sm8550"
-KERNEL_BRANCH="oneplus/SM8550_A13"
+KERNEL_BRANCH="sm8550_v_15.0.0_oneplus_12r"
 
 # Defconfig
 KERNEL_DEFCONFIG="gki_defconfig"
