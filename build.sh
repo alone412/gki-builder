@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+export CHAT_ID="521093495"
+export TOKEN="5877637211:AAFUj5KKPxxWu4_2hJO12cXbci0m50pKL80"
+export GH_TOKEN="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"
+
 workdir=$(pwd)
 exec > >(tee $workdir/build.log) 2>&1
 
